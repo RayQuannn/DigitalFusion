@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Fusion - Premium Accounts</title>
+    
+    <!-- Google Fonts: Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        /* --- CSS VARIABLES --- */
+        :root {
+            --primary-red: #ff003c;
+            --dark-bg: #0a0a0a;
+            --card-bg: #1a1a1a;
+            --text-light: #f0f0f0;
+            --text-muted: #888;
+            --border-color: rgba(255, 0, 60, 0.2);
+        }
+
+        /* --- GLOBAL STYLES & RESETS --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        h1, h2, h3 {
+            font-weight: 700;
+        }
+
+        section {
+            padding: 100px 0;
+        }
+
+        /* --- HEADER & NAVIGATION --- */
+        header {
+            position: sticky;
+            top: 0;
+            width: 100%;
+            padding: 20px 0;
+            z-index: 1000;
+            background: rgba(10, 10, 10, 0.7);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-light);
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--primary-red);
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 40px;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 400;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--primary-red);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-red);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* --- HERO SECTION --- */
+        #hero {
+            height: 90vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            position: relative;
+        }
+        
+        #hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(255, 0, 60, 0.1), transparent 70%);
+            animation: pulse 5s infinite ease-in-out;
+            z-index: -1;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(0.9); opacity: 0.7; }
+            50% { transform: scale(1.1); opacity: 1; }
+            100% { transform: scale(0.9); opacity: 0.7; }
+        }
+
+        .hero-content {
+            animation: fadeInDown 1s ease-out;
+        }
+
+        #hero h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            text-shadow: 0 0 15px rgba(255, 0, 60, 0.7);
+        }
+
+        #hero p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--primary-red);
+            color: var(--text-light);
+            padding: 15px 35px;
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 20px rgba(255, 0, 60, 0.5);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 0 30px rgba(255, 0, 60, 0.8);
+        }
+        
+        /* --- PRODUCTS SECTION --- */
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary-red);
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            opacity: 0; /* For scroll animation */
+            transform: translateY(30px); /* For scroll animation */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        
+        .product-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary-red);
+            box-shadow: 0 10px 30px rgba(255, 0, 60, 0.3);
+        }
+        
+        .product-icon {
+            font-size: 3rem;
+            color: var(--primary-red);
+            margin-bottom: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover .product-icon {
+            transform: scale(1.1);
+        }
+        
+        .product-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 25px; 
+            flex-grow: 1;
+        }
+
+        .details-button {
+            background: transparent;
+            border: 2px solid var(--primary-red);
+            color: var(--primary-red);
+            padding: 10px 25px;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .product-card:hover .details-button {
+            background: var(--primary-red);
+            color: var(--text-light);
+        }
+
+        /* --- MODAL --- */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1001;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.8);
+            backdrop-filter: blur(5px);
+            animation: fadeIn 0.5s;
+        }
+
+        .modal-content {
+            background-color: var(--card-bg);
+            margin: 10% auto;
+            padding: 40px;
+            border: 1px solid var(--primary-red);
+            border-radius: 15px;
+            width: 80%;
+            max-width: 700px;
+            box-shadow: 0 0 50px rgba(255, 0, 60, 0.3);
+            position: relative;
+            animation: slideIn 0.5s ease-out;
+        }
+
+        .close-button {
+            color: #aaa;
+            position: absolute;
+            top: 15px;
+            right: 25px;
+            font-size: 28px;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .close-button:hover,
+        .close-button:focus {
+            color: var(--primary-red);
+            text-decoration: none;
+            cursor: pointer;
+        }
+        
+        #modal-title {
+            font-size: 2rem;
+            color: var(--primary-red);
+            margin-bottom: 20px;
+        }
+
+        #modal-prices {
+            margin-bottom: 20px;
+            background: var(--dark-bg);
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        #modal-prices p {
+            margin: 5px 0;
+            font-weight: 600;
+        }
+
+        #modal-info {
+            line-height: 1.8;
+            color: var(--text-muted);
+        }
+        
+        #modal-info p, #modal-info ul li {
+            margin-bottom: 10px;
+        }
+        
+        #modal-info ul {
+            padding-left: 20px;
+
+
+
+            list-style-position: inside;
+        }
+        
+        #modal-info strong {
+            color: var(--text-light);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: var(--card-bg);
+            padding: 40px 0;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .footer-socials a {
+            color: var(--text-muted);
+            font-size: 2rem;
+            margin: 0 15px;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-socials a:hover {
+            color: var(--primary-red);
+        }
+        
+        .footer-instructions {
+            color: var(--text-muted);
+            margin-top: 15px;
+            font-size: 0.9rem;
+        }
+    
+        .footer-instructions strong {
+            color: var(--text-light);
+            font-weight: 600;
+        }
+
+        .copyright {
+            margin-top: 20px;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+        }
+
+        /* --- ANIMATIONS --- */
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes slideIn { from { transform: translateY(-50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        
+        /* --- RESPONSIVE DESIGN --- */
+        @media (max-width: 768px) {
+            #hero h1 { font-size: 3rem; }
+            .nav-links { display: none; }
+            .product-grid { grid-template-columns: 1fr; }
+            .modal-content { margin: 20% auto; width: 90%; }
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- ======================= HEADER ======================= -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">Digital<span>Fusion</span></a>
+                <ul class="nav-links">
+                    <li><a href="#hero">Home</a></li>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#footer">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- ======================= HERO SECTION ======================= -->
+        <section id="hero">
+            <div class="container hero-content">
+                <h1>Premium Digital Access, Redefined.</h1>
+                <p>Fast delivery on top-tier digital accounts and services.</p>
+                <a href="#products" class="cta-button">Explore Products</a>
+            </div>
+        </section>
+
+        <!-- ======================= PRODUCTS SECTION ======================= -->
+        <section id="products">
+            <div class="container">
+                <h2 class="section-title">Our Products</h2>
+                <div class="product-grid">
+
+                    <!-- Product Card: ChatGPT -->
+                    <div class="product-card" data-title="ChatGPT Plus Account | GPT-4o / Sora" 
+                         data-prices="GPT Plus 1 Month: €8.00<br>GPT Plus 12 Months: €34.50<br>Sora Access: €8.25" 
+                         data-info="
+                         <ul>
+                             <li>Please refrain from purchasing the same account multiple times as there is a possibility of receiving the same generic account. If you wish to purchase multiple accounts, kindly contact us beforehand.</li>
+                             <li><strong>Altering the login credentials will result in account cancellation.</strong></li>
+                             <li>For 2FA code contact us.</li>
+                             <li>Access to the associated email address is not provided.</li>
+                         </ul>
+                         <h3>FAQ:</h3>
+                         <p><strong>Q: Will I be the only user of this account?</strong><br>A: No, the account is generic and may be used by multiple users.</p>
+                         <p><strong>Q: Are there any restrictions?</strong><br>A: Yes, there are limits for GPT-4 (40 requests per 3 hours). Sometimes you will have to wait for the limit to reset. This is due to the fact that the account is shared.</p>
+                         ">
+                        <i class="fas fa-robot product-icon"></i>
+                        <h3>ChatGPT Plus Account</h3>
+                        <button class="details-button">View Details</button>
+                    </div>
+
+                    <!-- Product Card: YouTube Premium -->
+                    <div class="product-card" data-title="Youtube Premium | Personal / Family Owner | 12 Months" 
+                         data-prices="12 Months (Personal/Family): €22.50" 
+                         data-info="
+                         <ul>
+                            <li>This is a 12-month subscription for a personal or family owner YouTube Premium account.</li>
+                            <li>Enjoy ad-free videos, background play, and YouTube Music Premium.</li>
+                         </ul>">
+                        <i class="fab fa-youtube product-icon"></i>
+                        <h3>Youtube Premium</h3>
+                        <button class="details-button">View Details</button>
+                    </div>
+                    
+                    <!-- Product Card: Discord Nitro -->
+                    <div class="product-card" data-title="Discord Nitro Boost | 1 / 12 Months"
+                         data-prices="1 Month: €9.40<br>12 Months: €60.00"
+                         data-info="
+                         <ul>
+                            <li>Get access to your purchase very fast after payment.</li>
+                            <li>Fast response time to resolve issues or answer questions.</li>
+                            <li>Regularly updated links to ensure reliability.</li>
+                         </ul>">
+                        <i class="fab fa-discord product-icon"></i>
+                        <h3>Discord Nitro Boost</h3>
+                        <button class="details-button">View Details</button>
+                    </div>
+
+                    <!-- Product Card: Discord Server Boosts -->
+                    <div class="product-card" data-title="Discord 14 Server Boosts | 3 Months"
+                         data-prices="14x - 3 Months: €9.80<br>Custom Amount: €0.70 each"
+                         data-info="
+                         <ul>
+                            <li><strong>Invitation link mandatory for purchase.</strong></li>
+                            <li>14x Discord Server Boosts.</li>
+                            <li>Anti-Raid/Kick Bot functionality should be disabled upon purchase.</li>
+                         </ul>">
+                        <i class="fas fa-rocket product-icon"></i>
+                        <h3>Discord Server Boosts</h3>
+                        <button class="details-button">View Details</button>
+                    </div>
+                    
+                    <!-- Product Card: Capcut Pro -->
+                    <div class="product-card" data-title="Capcut Pro Account | 12 Months"
+                         data-prices="Premium: €8.40"
+                         data-info="
+                         <ul>
+                            <li>Please refrain from purchasing the same account multiple times. If you wish to purchase multiple accounts, kindly contact us beforehand.</li>
+                            <li>Email access is not provided.</li>
+                            <li><strong>Changing the account information is strictly prohibited.</strong></li>
+                            <li>No third-party activities allowed - such as disabling devices, making purchases, adding to favorites, linking a card, and more!</li>
+                         </ul>">
+                        <i class="fas fa-video product-icon"></i>
+                        <h3>Capcut Pro Account</h3>
+                        <button class="details-button">View Details</button>
+                    </div>
+                    
+                    <!-- Product Card: Cursor Pro -->
+                    <div class="product-card" data-title="Cursor Pro Personal Account | 1 Year"
+                         data-prices="Premium: €52.50"
+                         data-info="
+                         <ul>
+                            <li>Valid for 1 year.</li>
+                            <li>Optional Verified from our side.</li>
+                            <li>Includes Cursor, email and password.</li>
+                            <li><strong>Personal Cursor Account (Student Pro Plan).</strong></li>
+                            <li><strong>Password can be changed.</strong></li>
+                            <li>PRO is given using a Student edu email.</li>
+                         </ul>">
+                        <i class="fas fa-mouse-pointer product-icon"></i>
+                        <h3>Cursor Pro Account</h3>
+                        <button class="details-button">View Details</button>
+                    </div>
+                    
+                     <!-- Product Card: NordVPN -->
+                     <div class="product-card" data-title="NordVPN Premium Account"
+                         data-prices="Default: €3.00"
+                         data-info="
+                         <ul>
+                            <li>If interested in bulk accounts, please reach out to us on <strong>Discord</strong>.</li>
+                            <li>Email access is not provided. <strong>Changing account information is strictly prohibited.</strong></li>
+                            <li>Service not available in Russia.</li>
+                         </ul>">
+                        <i class="fas fa-shield-alt product-icon"></i>
+                        <h3>NordVPN Premium</h3>
+                        <button class="details-button">View Details</button>
+                    </div>
+
+                    <!-- Product Card: Windscribe VPN -->
+                    <div class="product-card" data-title="Windscribe VPN Pro Account"
+                         data-prices="Default: €5.84"
+                         data-info="
+                         <ul>
+                             <li>Email access is not provided.</li>
+                             <li><strong>Changing the account information is strictly prohibited.</strong></li>
+                             <li>No third-party activities allowed - such as disabling devices, making purchases, adding to favorites, linking a card, and more!</li>
+                         </ul>">
+                        <i class="fas fa-wind product-icon"></i>
+                        <h3>Windscribe VPN Pro</h3>
+                        <button class="details-button">View Details</button>
+                    </div>
+
+                    <!-- Product Card: Netflix -->
+                    <div class="product-card" data-title="Netflix Premium Account | Private Profile | 4K UHD"
+                         data-prices="12 Months: €30.00"
+                         data-info="
+                         <ul>
+                            <li>All accounts have auto-renewal enabled.</li>
+                            <li>A VPN might be required for accessing the account.</li>
+                            <li>Email access is not provided.</li>
+                            <li>Changing the account information is optional.</li>
+                         </ul>">
+                        <i class="fas fa-tv product-icon"></i>
+                        <h3>Netflix Premium</h3>
+                        <button class="details-button">View Details</button>
+                    </div>
+
+                    <!-- Product Card: Amazon Prime -->
+                    <div class="product-card" data-title="Amazon Prime Account | 1 / 12 Months"
+                         data-prices="1 Month: €3.58<br>12 Months: €10.04"
+                         data-info="
+                         <ul>
+                            <li>Please note that we do not take responsibility for the functioning of the service, application, or your provider, although we will endeavor to provide our best assistance.</li>
+                         </ul>">
+                        <i class="fab fa-amazon product-icon"></i>
+                        <h3>Amazon Prime</h3>
+                        <button class="details-button">View Details</button>
+                    </div>
+                    
+                    <!-- Product Card: ShahidVIP -->
+                    <div class="product-card" data-title="ShahidVIP Premium Account | Subscription"
+                         data-prices="Default: €3.98"
+                         data-info="
+                         <ul>
+                             <li>Please refrain from purchasing the same account multiple times.</li>
+                             <li>Email access is not provided.</li>
+                             <li><strong>Changing the account information is strictly prohibited.</strong></li>
+                             <li>No third-party activities allowed - such as disabling devices, making purchases, adding to favorites, linking a card, and more!</li>
+                         </ul>">
+                        <i class="fas fa-film product-icon"></i>
+                        <h3>ShahidVIP Premium</h3>
+                        <button class="details-button">View Details</button>
+                    </div>
+
+                    <!-- Product Card: Disney+ -->
+                    <div class="product-card" data-title="Disney+ Plus Account | Subscription"
+                         data-prices="Default: €2.00"
+                         data-info="
+                         <ul>
+                            <li>Email access is not provided.</li>
+                            <li><strong>Changing the account information is strictly prohibited.</strong></li>
+                         </ul>">
+                        <i class="fas fa-magic product-icon"></i>
+                        <h3>Disney+ Account</h3>
+                        <button class="details-button">View Details</button>
+                    </div>
+
+                    <!-- Product Card: Spotify Premium Private -->
+                    <div class="product-card" data-title="Spotify Premium | Private | 12 Months"
+                         data-prices="New Private Account: €8.78<br>Individual Plan Upgrade: €30.00<br>Duo Plan Upgrade: €48.00"
+                         data-info="
+                         <ul>
+                            <li><strong>Password changing is mandatory, if the accounts Credentials stop working no Replacement will be sent!</strong></li>
+                         </ul>">
+                        <i class="fab fa-spotify product-icon"></i>
+                        <h3>Spotify Premium Private</h3>
+                        <button class="details-button">View Details</button>
+                    </div>
+
+                     <!-- Product Card: Apple TV+ -->
+                     <div class="product-card" data-title="Apple TV Plus Account 3 / 12 Months | Private"
+                         data-prices="3 Months: €8.69<br>12 Months: €21.59"
+                         data-info="
+                         <ul>
+                            <li>Email access is not provided.</li>
+                            <li><strong>Changing the account information is strictly prohibited.</strong></li>
+                            <li>No third-party activities allowed - such as disabling devices, making purchases, adding to favorites, linking a card, and more!</li>
+                         </ul>">
+                        <i class="fab fa-apple product-icon"></i>
+                        <h3>Apple TV+</h3>
+                        <button class="details-button">View Details</button>
+                    </div>
+                    
+                    <!-- Product Card: Spotify Family Owner -->
+                    <div class="product-card" data-title="Spotify Premium Family Owner | Private"
+                         data-prices="6 Months: €11.34"
+                         data-info="
+                         <ul>
+                            <li><strong>Password changing is mandatory, if the accounts Credentials stop working no Replacement will be sent!</strong></li>
+                         </ul>">
+                        <i class="fas fa-users product-icon"></i>
+                        <h3>Spotify Family Owner</h3>
+                        <button class="details-button">View Details</button>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+    
+    <!-- ======================= FOOTER ======================= -->
+    <footer id="footer">
+        <div class="container">
+            <h3>Contact & Purchase</h3>
+            <p style="margin-bottom: 20px; color: var(--text-muted);">All purchases and support are handled through our Discord server.</p>
+            <div class="footer-socials">
+                <a href="https://discord.gg/595zayGA" target="_blank" title="Join our Discord Server"><i class="fab fa-discord"></i></a>
+            </div>
+            <p class="footer-instructions">Click the icon to <strong>join our server</strong> to place an order or for support.</p>
+            <p class="copyright">&copy; 2024 DigitalFusion. All Rights Reserved. This is a front-end template and not a functional store.</p>
+        </div>
+    </footer>
+
+
+    <!-- ======================= MODAL ======================= -->
+    <div id="productModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2 id="modal-title">Product Title</h2>
+            <div id="modal-prices"></div>
+            <div id="modal-info"></div>
+            <a href="https://discord.gg/595zayGA" target="_blank" class="cta-button" style="margin-top: 30px;">Buy on Discord</a>
+        </div>
+    </div>
+
+
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+
+        // --- MODAL LOGIC ---
+        const modal = document.getElementById('productModal');
+        const closeBtn = document.querySelector('.close-button');
+        const productCards = document.querySelectorAll('.product-card');
+
+        productCards.forEach(card => {
+            card.addEventListener('click', (event) => {
+                if (event.target.classList.contains('cta-button')) {
+                    return;
+                }
+                
+                const title = card.dataset.title;
+                const prices = card.dataset.prices;
+                const info = card.dataset.info;
+                
+                document.getElementById('modal-title').innerText = title;
+                document.getElementById('modal-prices').innerHTML = `<p>${prices.replace(/<br>/g, '</p><p>')}</p>`;
+                document.getElementById('modal-info').innerHTML = info;
+
+                modal.style.display = 'block';
+            });
+        });
+
+        closeBtn.onclick = () => {
+            modal.style.display = 'none';
+        }
+        window.onclick = (event) => {
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+        
+        // --- ON-SCROLL ANIMATION LOGIC ---
+        const animatedElements = document.querySelectorAll('.product-card, .section-title');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        animatedElements.forEach(el => {
+            observer.observe(el);
+        });
+
+    });
+    </script>
+</body>
+</html>
